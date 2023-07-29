@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('historico')" :active="request()->routeIs('historico')">
                         Histórico
                     </x-nav-link>
+                    <x-nav-link :href="route('vendaRecibo')" :active="request()->routeIs('vendaRecibo')">
+                        Venda/Recebidos
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -81,6 +84,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('historico')" :active="request()->routeIs('historico')">
                 Histórico
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('vendaRecibo')" :active="request()->routeIs('vendaRecibo')">
+                Venda/Recebidos
             </x-responsive-nav-link>
         </div>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Produto;
 use App\Models\ControleEstoqueTable;
 use App\Http\Requests\ProdutoSaveRequest;
@@ -32,6 +33,7 @@ class ProdutoController extends Controller
         }else{
             $produto = new Produto;
             $produto->sku = $request->all()['sku'];
+            $produto->userId = Auth::user()->id;
             $this->saveProduct($produto, $request);
             return redirect()->to('estoque/produto/'.$request->all()['sku']);
         }
