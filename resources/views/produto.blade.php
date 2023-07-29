@@ -1,5 +1,5 @@
 <x-app-layout>
-    <form method="POST" action="{{ route('produto.addProduto') }}">
+    <form method="POST" action="{{ route('produto.addProduto') }}" enctype="multipart/form-data">
         @csrf
         <div class="container">
             <div>
@@ -19,6 +19,11 @@
                 <input type="text" value="{{$produtoData->descricao ?? ''}}" name="descricao">
                 <label>Tipo</label>
                 <x-produto-tipo :selected="$produtoData->tipo ?? ''"/>
+                @if($produtoData->image ?? '')
+                    <img src="{{ asset('images/'.$produtoData->image  ) }}" />
+                @else
+                    <input type="file" class="form-control" name="image" />
+                @endif
             </div>
         </div>
         <button type="submit">Salvar</button>
