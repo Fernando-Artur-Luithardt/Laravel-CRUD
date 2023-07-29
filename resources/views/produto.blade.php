@@ -3,6 +3,9 @@
         @csrf
         <div class="container">
             <div>
+                Estoque: {{$qtdEstoque->qtdEstoque ?? '0'}}
+            </div>
+            <div>
                 <label>SKU</label>
                 <input type="text" value="{{$produtoData->sku ?? ''}}" name="sku">
                 <label>Nome</label>
