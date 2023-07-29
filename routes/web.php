@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EstoqueController;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\HistoricoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +25,8 @@ Route::get('/estoque', [EstoqueController::class, 'estoque'] )->middleware(['aut
 
 Route::get('/estoque/produto/{produto?}', [ProdutoController::class, 'produto'] )->middleware(['auth', 'verified'])->name('produto');
 Route::post('/estoque/produto/save', [ProdutoController::class, 'addProduto'] )->middleware(['auth', 'verified'])->name('produto.addProduto');
+
+Route::get('/estoque/historico', [HistoricoController::class, 'historico'] )->middleware(['auth', 'verified'])->name('historico');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
