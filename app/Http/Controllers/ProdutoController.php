@@ -4,21 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Produto;
+use App\Models\ProdutoTable;
 use App\Models\ControleEstoqueTable;
 use App\Http\Requests\ProdutoSaveRequest;
 
 class ProdutoController extends Controller
 {
     public function produto($produto = false){
-        $produtoData = Produto::select(['produto.sku', 'produto.nome', 'produto.tipo', 'produto.preco', 'produto.descricao', 'produto.descricao', 'produto.dataDeVencimento', 'produto.created_at', 'produto.updated_at', 'produto.image'])->join('produtotipo', 'produtotipo.id', '=', 'produto.tipo')->find($produto);
+        $produtoData = ProdutoTable::select(['produto.sku', 'produto.nome', 'produto.tipo', 'produto.preco', 'produto.descricao', 'produto.descricao', 'produto.dataDeVencimento', 'produto.created_at', 'produto.updated_at', 'produto.image'])->join('produtotipo', 'produtotipo.id', '=', 'produto.tipo')->find($produto);
         $qtdEstoque = ControleEstoqueTable::select(ControleEstoqueTable::raw('sum(quantidade) as qtdEstoque'))->where('controleestoque.produtoSku', $produto)->get();
         return view('produto', ['produtoData' => $produtoData, 'qtdEstoque' => $qtdEstoque[0]]);
     }
 
     public function addProduto(Request $request){
-        
-        $produto = Produto::find($request->all()['sku']);
+
+        $produto = ProdutoTable::find($request->all()['sku']);
 
         $request->validate([
             'nome'      =>      'required',
