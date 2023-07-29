@@ -22,7 +22,8 @@ Route::get('/dashboard', function () {
 Route::get('/estoque', [EstoqueController::class, 'estoque'] )->middleware(['auth', 'verified'])->name('estoque');
 
 
-Route::get('/estoque/produto/{produto}', [ProdutoController::class, 'produto'] )->middleware(['auth', 'verified'])->name('produto');
+Route::get('/estoque/produto/{produto?}', [ProdutoController::class, 'produto'] )->middleware(['auth', 'verified'])->name('produto');
+Route::post('/estoque/produto/save', [ProdutoController::class, 'addProduto'] )->middleware(['auth', 'verified'])->name('produto.addProduto');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
