@@ -9,5 +9,5 @@ class ControleEstoqueTable extends Model
 {
     use HasFactory;
 
-    protected $table = 'controleestoque';
+    protected $table = 'controle_estoque';
 }

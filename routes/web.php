@@ -28,7 +28,7 @@ Route::get('/estoque/produto/{produto?}', [ProdutoController::class, 'produto'] 
 Route::post('/estoque/produto/save', [ProdutoController::class, 'addProduto'] )->middleware(['auth', 'verified'])->name('produto.addProduto');
 
 Route::get('/estoque/gerencia', [GerenciaController::class, 'gerencia'] )->middleware(['auth', 'verified'])->name('gerencia');
-Route::post('/estoque/gerencia/save', [GerenciaController::class, 'gerenciaSave'] )->middleware(['auth', 'verified'])->name('gerencia.add');
+Route::post('/estoque/gerencia/save', [GerenciaController::class, 'addGerencia'] )->middleware(['auth', 'verified'])->name('gerencia.addGerencia');
 
 Route::get('/estoque/historico', [HistoricoController::class, 'historico'] )->middleware(['auth', 'verified'])->name('historico');
 

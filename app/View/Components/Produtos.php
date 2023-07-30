@@ -31,6 +31,6 @@ class Produtos extends Component
 
     public function produtos()
     {
-        return ProdutoTable::all();
+        return ProdutoTable::select('produto.nome', 'produto.sku', ProdutoTable::raw('sum(controle_estoque.quantidade) as qtdEstoque'))->leftjoin('controle_estoque', 'controle_estoque.produtoSku', '=', 'produto.sku')->groupBy('produto.sku')->get();
     }
 }
