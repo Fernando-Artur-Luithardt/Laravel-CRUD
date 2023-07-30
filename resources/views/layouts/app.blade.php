@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html class="w-full bg-gray-100" style="height: calc(100% - 65px);" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,10 +13,11 @@
 
         <!-- Scripts -->
         <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+    <body class="w-full h-full font-sans antialiased">
+        <div class="w-full h-full">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -29,7 +30,7 @@
             @endif
 
             <!-- Page Content -->
-            <main>
+            <main class="w-full h-full">
                 {{ $slot }}
             </main>
         </div>

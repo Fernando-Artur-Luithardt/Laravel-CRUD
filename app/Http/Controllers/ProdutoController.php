@@ -21,10 +21,10 @@ class ProdutoController extends Controller
         $produto = ProdutoTable::find($request->all()['sku']);
 
         $request->validate([
-            'nome'      =>      'required',
-            'sku'       =>      'required',
-            'tipo'      =>      'required',
-            'image'     => 'image|mimes:png,jpg,jpeg|max:2048'
+            'nome'              =>      'required',
+            'sku'               =>      'required',
+            'tipo'              =>      'required',
+            'image'             => 'image|mimes:png,jpg,jpeg|max:2048'
         ]);
 
         if($produto) {
@@ -41,7 +41,7 @@ class ProdutoController extends Controller
 
     private function saveProduct(ProdutoTable $produto, Request $request){
         $produto->nome = $request->all()['nome'];
-        $produto->dataDeVencimento = $request->all()['dataDeVencimento'];
+        $produto->dataDeVencimento = $request->all()['dataDeVencimento'] ? date('Y-m-d H:i:s',strtotime($request->all()['dataDeVencimento'])) : '';
         $produto->descricao = $request->all()['descricao'];
         $produto->tipo = $request->all()['tipo'];
         if($request->image){

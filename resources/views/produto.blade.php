@@ -13,9 +13,9 @@
             </div>
             <div>
                 <label>Data de vencimento</label>
-                <input type="text" value="{{$produtoData->dataDeVencimento ?? '' ? date('d/m/Y', strtotime($produtoData->dataDeVencimento)) : ''}}" name="dataDeVencimento">
+                <input type="date" class="data-type" value="{{$produtoData->dataDeVencimento ?? '' ? date('Y-m-d', strtotime($produtoData->dataDeVencimento)) : ''}}" name="dataDeVencimento">
                 <label>Data de Cadastro</label>
-                <input type="text" value="{{$produtoData->created_at ?? '' ? date('d/m/Y', strtotime($produtoData->created_at)) : ''}}" name="created_at" disabled>
+                <input type="date" value="{{$produtoData->created_at ?? '' ? date('Y-m-d', strtotime($produtoData->created_at)) : date('Y-m-d')}}" name="created_at" disabled>
             </div>
             <div>
                 <label>Descricao</label>
@@ -32,3 +32,12 @@
         <button type="submit">Salvar</button>
     </form>
 </x-app-layout>
+<script defer>
+    $(document).ready(function () {
+        $(document).find('[name="dataDeVencimento"]').each(function(key, item){
+            $(item).trigger('change')
+        })
+        //$(document).find(".data-type").mask("99/99/9999", {placeholder: 'MM/DD/YYYY' });
+        //console.log($(document).find('.data-type')).mask("99/99/9999", {placeholder: 'MM/DD/YYYY' });
+    });
+</script>

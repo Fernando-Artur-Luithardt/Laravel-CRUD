@@ -17,10 +17,6 @@ use App\Http\Controllers\GerenciaController;
 |
 */
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::get('/estoque', [EstoqueController::class, 'estoque'] )->middleware(['auth', 'verified'])->name('estoque');
 
 
