@@ -1,7 +1,7 @@
 <x-app-layout>
-    <button type="buttom" href="{{ route('produto') }}">NOVO</button>
     <div class="flex first-line:w-full h-full justify-center items-center">
         <div class="w-3/4 h-3/4 shadow-lg p-4 rounded-xl">
+            <button type="buttom" style="padding: 6px; background-color: #6DB569; border-radius: 10% 10%;" href="{{ route('produto') }}">NOVO</button>
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>

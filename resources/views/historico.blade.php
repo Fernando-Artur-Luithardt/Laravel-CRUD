@@ -10,17 +10,19 @@
                         <th>Valor unitário</th>
                         <th>Valor total</th>
                         <th>Usuário</th>
+                        <th>Ação</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($historicos as $historico)
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$historico->nome}}</td>
-                        <td>{{$historico->data ?? '' ? date('d/m/Y H:i', strtotime($historico->data)) : ''}}</td>
+                        <td>{{$historico->created_at ?? '' ? date('d/m/Y H:i', strtotime($historico->created_at)) : ''}}</td>
                         <td>{{$historico->quantidade}}</td>
                         <td>{{$historico->valor}}</td>
                         <td>R$ {{number_format($historico->valor * $historico->quantidade, 2)}}</td>
                         <td>{{$historico->name}}</td>
+                        <td>{{$historico->quantidade > 0 ? 'RECEBIDO' : 'VENDA'}}</td>
                     </tr>
                     @endforeach
                 </tbody>

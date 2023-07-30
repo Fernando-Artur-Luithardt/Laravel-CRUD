@@ -11,7 +11,7 @@ use App\Http\Requests\ProdutoSaveRequest;
 class ProdutoController extends Controller
 {
     public function produto($produto = false){
-        $produtoData = ProdutoTable::select(['produto.sku', 'produto.nome', 'produto.tipo', 'produto.preco', 'produto.descricao', 'produto.descricao', 'produto.dataDeVencimento', 'produto.created_at', 'produto.updated_at', 'produto.image'])->join('produto_tipo', 'produto_tipo.id', '=', 'produto.tipo')->find($produto);
+        $produtoData = ProdutoTable::select(['produto.sku', 'produto.nome', 'produto.tipo', 'produto.preco', 'produto.descricao', 'produto.descricao', 'produto.dataDeVencimento', 'produto.created_at', 'produto.updated_at', 'produto.image', 'users.name as userName'])->join('produto_tipo', 'produto_tipo.id', '=', 'produto.tipo')->join('users', 'users.id', '=', 'produto.userId')->find($produto);
         $qtdEstoque = ControleEstoqueTable::select(ControleEstoqueTable::raw('sum(quantidade) as qtdEstoque'))->where('controle_estoque.produtoSku', $produto)->get();
         return view('produto', ['produtoData' => $produtoData, 'qtdEstoque' => $qtdEstoque[0]]);
     }
